@@ -1,0 +1,503 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>TestNG:  Unit Test</title>
+<style type="text/css">
+table caption,table.info_table,table.result,table.passed,table.failed {margin-bottom:10px;border:1px solid #000099;border-collapse:collapse;empty-cells:show;}
+table.info_table td,table.info_table th,table.result td,table.result th,table.passed td,table.passed th,table.failed td,table.failed th {
+border:1px solid #000099;padding:.25em .5em .25em .5em
+}
+table.result th {vertical-align:bottom}
+tr.param th {padding-left:1em;padding-right:1em}
+tr.param td {padding-left:.5em;padding-right:2em}
+td.numi,th.numi,td.numi_attn {
+text-align:right
+}
+tr.total td {font-weight:bold}
+table caption {
+text-align:center;font-weight:bold;
+}
+table.passed tr.stripe td,table tr.passedodd td {background-color: #00AA00;}
+table.passed td,table tr.passedeven td {background-color: #33FF33;}
+table.passed tr.stripe td,table tr.skippedodd td {background-color: #cccccc;}
+table.passed td,table tr.skippedodd td {background-color: #dddddd;}
+table.failed tr.stripe td,table tr.failedodd td,table.result td.numi_attn {background-color: #FF3333;}
+table.failed td,table tr.failedeven td,table.result tr.stripe td.numi_attn {background-color: #DD0000;}
+tr.stripe td,tr.stripe th {background-color: #E6EBF9;}
+p.totop {font-size:85%;text-align:center;border-bottom:2px black solid}
+div.shootout {padding:2em;border:3px #4854A8 solid}
+</style>
+</head>
+<body>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr><th>Test</th><th class="numi">Methods<br/>Passed</th><th class="numi">Scenarios<br/>Passed</th><th class="numi"># skipped</th><th class="numi"># failed</th><th class="numi">Total<br/>Time</th><th class="numi">Included<br/>Groups</th><th class="numi">Excluded<br/>Groups</th></tr>
+<tr><td style="text-align:left;padding-right:2em">AndroidTest</td><td class="numi">20</td><td class="numi">11</td><td class="numi">0</td><td class="numi_attn">20</td><td class="numi">261.8 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+</table>
+<table cellspacing="0" cellpadding="0" class="passed" id="summary">
+<tr><th>Class</th><th>Method</th><th># of<br/>Scenarios</th><th>Start</th><th>Time<br/>(ms)</th></tr>
+<tr><th colspan="4">AndroidTest &#8212; failed</th></tr>
+<tr class="failedodd"><td rowspan="10">com.sjsu.tests.MultipleGmailLogIn</td><td><a href="#m1"><b>gmailLogin</b>  </a></td><td class="numi">5</td><td>1370017264257</td><td class="numi">198549</td></tr><tr class="failedodd"><td><a href="#m2"><b>gmailLogin</b>  </a></td><td class="numi">5</td><td>1370017264257</td><td class="numi">198549</td></tr><tr class="failedodd"><td><a href="#m3"><b>gmailLogin</b>  </a></td><td class="numi">5</td><td>1370017264257</td><td class="numi">198549</td></tr><tr class="failedodd"><td><a href="#m4"><b>gmailLogin</b>  </a></td><td class="numi">5</td><td>1370017264257</td><td class="numi">198549</td></tr><tr class="failedodd"><td><a href="#m5"><b>gmailLogin</b>  </a></td><td class="numi">5</td><td>1370017264257</td><td class="numi">198549</td></tr><tr class="failedodd"><td><a href="#m6"><b>gmailLogin</b>  </a></td><td class="numi">5</td><td>1370017264257</td><td class="numi">198549</td></tr><tr class="failedodd"><td><a href="#m7"><b>gmailLogin</b>  </a></td><td class="numi">5</td><td>1370017264257</td><td class="numi">198549</td></tr><tr class="failedodd"><td><a href="#m8"><b>gmailLogin</b>  </a></td><td class="numi">5</td><td>1370017264257</td><td class="numi">198549</td></tr><tr class="failedodd"><td><a href="#m9"><b>gmailLogin</b>  </a></td><td class="numi">5</td><td>1370017264257</td><td class="numi">198549</td></tr><tr class="failedodd"><td><a href="#m10"><b>gmailLogin</b>  </a></td><td class="numi">5</td><td>1370017264257</td><td class="numi">198549</td></tr>
+<tr class="failedeven"><td rowspan="10">com.sjsu.tests.AmazonShoppingCartTest</td><td><a href="#m11"><b>googleSearch</b>  </a></td><td class="numi">4</td><td>1370017264257</td><td class="numi">221929</td></tr><tr class="failedeven"><td><a href="#m12"><b>googleSearch</b>  </a></td><td class="numi">4</td><td>1370017264257</td><td class="numi">221929</td></tr><tr class="failedeven"><td><a href="#m13"><b>googleSearch</b>  </a></td><td class="numi">4</td><td>1370017264257</td><td class="numi">221929</td></tr><tr class="failedeven"><td><a href="#m14"><b>googleSearch</b>  </a></td><td class="numi">4</td><td>1370017264257</td><td class="numi">221929</td></tr><tr class="failedeven"><td><a href="#m15"><b>googleSearch</b>  </a></td><td class="numi">4</td><td>1370017264257</td><td class="numi">221929</td></tr><tr class="failedeven"><td><a href="#m16"><b>googleSearch</b>  </a></td><td class="numi">4</td><td>1370017264257</td><td class="numi">221929</td></tr><tr class="failedeven"><td><a href="#m17"><b>googleSearch</b>  </a></td><td class="numi">4</td><td>1370017264257</td><td class="numi">221929</td></tr><tr class="failedeven"><td><a href="#m18"><b>googleSearch</b>  </a></td><td class="numi">4</td><td>1370017264257</td><td class="numi">221929</td></tr><tr class="failedeven"><td><a href="#m19"><b>googleSearch</b>  </a></td><td class="numi">4</td><td>1370017264257</td><td class="numi">221929</td></tr><tr class="failedeven"><td><a href="#m20"><b>googleSearch</b>  </a></td><td class="numi">4</td><td>1370017264257</td><td class="numi">221929</td></tr>
+<tr><th colspan="4">AndroidTest &#8212; passed</th></tr>
+<tr class="passedodd"><td rowspan="10">com.sjsu.tests.MultipleGmailLogIn</td><td><a href="#m21"><b>gmailLogin</b>  </a></td><td class="numi">5</td><td>1370017293081</td><td class="numi">232973</td></tr><tr class="passedodd"><td><a href="#m22"><b>gmailLogin</b>  </a></td><td class="numi">5</td><td>1370017293081</td><td class="numi">232973</td></tr><tr class="passedodd"><td><a href="#m23"><b>gmailLogin</b>  </a></td><td class="numi">5</td><td>1370017293081</td><td class="numi">232973</td></tr><tr class="passedodd"><td><a href="#m24"><b>gmailLogin</b>  </a></td><td class="numi">5</td><td>1370017293081</td><td class="numi">232973</td></tr><tr class="passedodd"><td><a href="#m25"><b>gmailLogin</b>  </a></td><td class="numi">5</td><td>1370017293081</td><td class="numi">232973</td></tr><tr class="passedodd"><td><a href="#m26"><b>gmailLogin</b>  </a></td><td class="numi">5</td><td>1370017293081</td><td class="numi">232973</td></tr><tr class="passedodd"><td><a href="#m27"><b>gmailLogin</b>  </a></td><td class="numi">5</td><td>1370017293081</td><td class="numi">232973</td></tr><tr class="passedodd"><td><a href="#m28"><b>gmailLogin</b>  </a></td><td class="numi">5</td><td>1370017293081</td><td class="numi">232973</td></tr><tr class="passedodd"><td><a href="#m29"><b>gmailLogin</b>  </a></td><td class="numi">5</td><td>1370017293081</td><td class="numi">232973</td></tr><tr class="passedodd"><td><a href="#m30"><b>gmailLogin</b>  </a></td><td class="numi">5</td><td>1370017293081</td><td class="numi">232973</td></tr>
+<tr class="passedeven"><td rowspan="10">com.sjsu.tests.AmazonShoppingCartTest</td><td><a href="#m31"><b>googleSearch</b>  </a></td><td class="numi">6</td><td>1370017264257</td><td class="numi">245634</td></tr><tr class="passedeven"><td><a href="#m32"><b>googleSearch</b>  </a></td><td class="numi">6</td><td>1370017264257</td><td class="numi">245634</td></tr><tr class="passedeven"><td><a href="#m33"><b>googleSearch</b>  </a></td><td class="numi">6</td><td>1370017264257</td><td class="numi">245634</td></tr><tr class="passedeven"><td><a href="#m34"><b>googleSearch</b>  </a></td><td class="numi">6</td><td>1370017264257</td><td class="numi">245634</td></tr><tr class="passedeven"><td><a href="#m35"><b>googleSearch</b>  </a></td><td class="numi">6</td><td>1370017264257</td><td class="numi">245634</td></tr><tr class="passedeven"><td><a href="#m36"><b>googleSearch</b>  </a></td><td class="numi">6</td><td>1370017264257</td><td class="numi">245634</td></tr><tr class="passedeven"><td><a href="#m37"><b>googleSearch</b>  </a></td><td class="numi">6</td><td>1370017264257</td><td class="numi">245634</td></tr><tr class="passedeven"><td><a href="#m38"><b>googleSearch</b>  </a></td><td class="numi">6</td><td>1370017264257</td><td class="numi">245634</td></tr><tr class="passedeven"><td><a href="#m39"><b>googleSearch</b>  </a></td><td class="numi">6</td><td>1370017264257</td><td class="numi">245634</td></tr><tr class="passedeven"><td><a href="#m40"><b>googleSearch</b>  </a></td><td class="numi">6</td><td>1370017264257</td><td class="numi">245634</td></tr>
+</table>
+<h1>AndroidTest</h1>
+<h2 id="m1">com.sjsu.tests.MultipleGmailLogIn:gmailLogin</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr>
+<tr class="param stripe"><td>abc@gmail.com</td>
+<td>1234</td>
+</tr>
+<tr><td style="padding-left:3em" colspan="2">
+<p>Gmail Login Failed expected [true] but found [false]</p>
+org.testng.Assert.fail(Assert.java:94)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:494)
+<br/>at org.testng.Assert.assertTrue(Assert.java:42)
+<br/>at com.sjsu.tests.MultipleGmailLogIn.gmailLogin(MultipleGmailLogIn.java:221)
+<br/>17 lines not shown
+</td></tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m2">com.sjsu.tests.AmazonShoppingCartTest:googleSearch</h2>
+<div style="padding-left:3em">
+<p>Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;add-to-cart-button&quot;}
+Command duration or timeout: 11.33 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.32.0&apos;, revision: &apos;6c40c18&apos;, time: &apos;2013-04-09 17:22:56&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.8.3&apos;, java.version: &apos;1.6.0_43&apos;
+Session ID: 6479c10e-0d57-e144-9787-9f092906fb77
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, rotatable=false, locationContextEnabled=true, version=21.0, cssSelectorsEnabled=true, databaseEnabled=true, handlesAlerts=true, browserConnectionEnabled=true, nativeEvents=false, webStorageEnabled=true, applicationCacheEnabled=true, takesScreenshot=true}]
+Command duration or timeout: 11.83 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.31.0&apos;, revision: &apos;1bd294d&apos;, time: &apos;2013-02-27 20:53:56&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.8.3&apos;, java.version: &apos;1.6.0_41&apos;
+Session ID: f56b5e87-36fc-4718-a946-1edfcf0609e1
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, rotatable=false, locationContextEnabled=true, webdriver.remote.sessionid=f56b5e87-36fc-4718-a946-1edfcf0609e1, version=21.0, cssSelectorsEnabled=true, databaseEnabled=true, handlesAlerts=true, browserConnectionEnabled=true, webStorageEnabled=true, nativeEvents=false, applicationCacheEnabled=true, takesScreenshot=true}]</p>
+sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+<br/>at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+<br/>at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+<br/>at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+<br/>at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:187)
+<br/>at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:145)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:554)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:307)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:348)
+<br/>at org.openqa.selenium.By$ById.findElement(By.java:216)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:299)
+<br/>at com.sjsu.tests.AmazonShoppingCartTest.googleSearch(AmazonShoppingCartTest.java:157)
+<br/>17 lines not shown
+<p>Caused by Screen shot has been taken
+Build info: version: &apos;2.31.0&apos;, revision: &apos;1bd294d&apos;, time: &apos;2013-02-27 20:53:56&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.8.3&apos;, java.version: &apos;1.6.0_41&apos;
+Driver info: driver.version: RemoteWebDriver</p>
+org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:125)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:554)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:307)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:348)
+<br/>at org.openqa.selenium.By$ById.findElement(By.java:216)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:299)
+<br/>at com.sjsu.tests.AmazonShoppingCartTest.googleSearch(AmazonShoppingCartTest.java:157)
+<br/>17 lines not shown
+<p>Caused by Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;add-to-cart-button&quot;}
+Command duration or timeout: 11.33 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.32.0&apos;, revision: &apos;6c40c18&apos;, time: &apos;2013-04-09 17:22:56&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.8.3&apos;, java.version: &apos;1.6.0_43&apos;
+Session ID: 6479c10e-0d57-e144-9787-9f092906fb77
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, rotatable=false, locationContextEnabled=true, version=21.0, cssSelectorsEnabled=true, databaseEnabled=true, handlesAlerts=true, browserConnectionEnabled=true, nativeEvents=false, webStorageEnabled=true, applicationCacheEnabled=true, takesScreenshot=true}]
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.31.0&apos;, revision: &apos;1bd294d&apos;, time: &apos;2013-02-27 20:53:56&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.8.3&apos;, java.version: &apos;1.6.0_41&apos;
+Driver info: driver.version: EventFiringWebDriver</p>
+sun.reflect.GeneratedConstructorAccessor35.newInstance(Unknown Source)
+<br/>at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+<br/>at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+<br/>at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:187)
+<br/>at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:145)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:554)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:307)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:348)
+<br/>at org.openqa.selenium.By$ById.findElement(By.java:216)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:299)
+<br/>at sun.reflect.GeneratedMethodAccessor23.invoke(Unknown Source)
+<br/>at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+<br/>at java.lang.reflect.Method.invoke(Method.java:597)
+<br/>at org.openqa.selenium.support.events.EventFiringWebDriver$2.invoke(EventFiringWebDriver.java:101)
+<br/>at com.sun.proxy.$Proxy1.findElement(Unknown Source)
+<br/>at org.openqa.selenium.support.events.EventFiringWebDriver.findElement(EventFiringWebDriver.java:180)
+<br/>at org.openqa.selenium.remote.server.handler.FindElement.call(FindElement.java:47)
+<br/>at org.openqa.selenium.remote.server.handler.FindElement.call(FindElement.java:1)
+<br/>at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+<br/>at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+<br/>at org.openqa.selenium.remote.server.DefaultSession$1.run(DefaultSession.java:169)
+<br/>at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:895)
+<br/>at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:918)
+<br/>at java.lang.Thread.run(Thread.java:680)
+<br/>1 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m3">com.sjsu.tests.MultipleGmailLogIn:gmailLogin</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr>
+<tr class="param stripe"><td>abc@gmail.com</td>
+<td>1234</td>
+</tr>
+<tr><td style="padding-left:3em" colspan="2">
+<p>Gmail Login Failed expected [true] but found [false]</p>
+org.testng.Assert.fail(Assert.java:94)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:494)
+<br/>at org.testng.Assert.assertTrue(Assert.java:42)
+<br/>at com.sjsu.tests.MultipleGmailLogIn.gmailLogin(MultipleGmailLogIn.java:221)
+<br/>17 lines not shown
+</td></tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m4">com.sjsu.tests.MultipleGmailLogIn:gmailLogin</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr>
+<tr class="param stripe"><td>abc@gmail.com</td>
+<td>1234</td>
+</tr>
+<tr><td style="padding-left:3em" colspan="2">
+<p>Gmail Login Failed expected [true] but found [false]</p>
+org.testng.Assert.fail(Assert.java:94)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:494)
+<br/>at org.testng.Assert.assertTrue(Assert.java:42)
+<br/>at com.sjsu.tests.MultipleGmailLogIn.gmailLogin(MultipleGmailLogIn.java:221)
+<br/>17 lines not shown
+</td></tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m5">com.sjsu.tests.AmazonShoppingCartTest:googleSearch</h2>
+<div style="padding-left:3em">
+<p>Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;add-to-cart-button&quot;}
+Command duration or timeout: 11.71 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.32.0&apos;, revision: &apos;6c40c18&apos;, time: &apos;2013-04-09 17:22:56&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.8.3&apos;, java.version: &apos;1.6.0_43&apos;
+Session ID: abe3dbec-a189-c140-856b-3ab49d84f849
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, rotatable=false, locationContextEnabled=true, version=21.0, cssSelectorsEnabled=true, databaseEnabled=true, handlesAlerts=true, browserConnectionEnabled=true, nativeEvents=false, webStorageEnabled=true, applicationCacheEnabled=true, takesScreenshot=true}]
+Command duration or timeout: 12.26 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.31.0&apos;, revision: &apos;1bd294d&apos;, time: &apos;2013-02-27 20:53:56&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.8.3&apos;, java.version: &apos;1.6.0_41&apos;
+Session ID: bd13c0c1-84d0-4bd9-9a3e-177cdfe910c1
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, rotatable=false, locationContextEnabled=true, webdriver.remote.sessionid=bd13c0c1-84d0-4bd9-9a3e-177cdfe910c1, version=21.0, cssSelectorsEnabled=true, databaseEnabled=true, handlesAlerts=true, browserConnectionEnabled=true, webStorageEnabled=true, nativeEvents=false, applicationCacheEnabled=true, takesScreenshot=true}]</p>
+sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+<br/>at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+<br/>at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+<br/>at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+<br/>at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:187)
+<br/>at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:145)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:554)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:307)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:348)
+<br/>at org.openqa.selenium.By$ById.findElement(By.java:216)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:299)
+<br/>at com.sjsu.tests.AmazonShoppingCartTest.googleSearch(AmazonShoppingCartTest.java:157)
+<br/>17 lines not shown
+<p>Caused by Screen shot has been taken
+Build info: version: &apos;2.31.0&apos;, revision: &apos;1bd294d&apos;, time: &apos;2013-02-27 20:53:56&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.8.3&apos;, java.version: &apos;1.6.0_41&apos;
+Driver info: driver.version: RemoteWebDriver</p>
+org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:125)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:554)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:307)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:348)
+<br/>at org.openqa.selenium.By$ById.findElement(By.java:216)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:299)
+<br/>at com.sjsu.tests.AmazonShoppingCartTest.googleSearch(AmazonShoppingCartTest.java:157)
+<br/>17 lines not shown
+<p>Caused by Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;add-to-cart-button&quot;}
+Command duration or timeout: 11.71 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.32.0&apos;, revision: &apos;6c40c18&apos;, time: &apos;2013-04-09 17:22:56&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.8.3&apos;, java.version: &apos;1.6.0_43&apos;
+Session ID: abe3dbec-a189-c140-856b-3ab49d84f849
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, rotatable=false, locationContextEnabled=true, version=21.0, cssSelectorsEnabled=true, databaseEnabled=true, handlesAlerts=true, browserConnectionEnabled=true, nativeEvents=false, webStorageEnabled=true, applicationCacheEnabled=true, takesScreenshot=true}]
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.31.0&apos;, revision: &apos;1bd294d&apos;, time: &apos;2013-02-27 20:53:56&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.8.3&apos;, java.version: &apos;1.6.0_41&apos;
+Driver info: driver.version: EventFiringWebDriver</p>
+sun.reflect.GeneratedConstructorAccessor35.newInstance(Unknown Source)
+<br/>at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+<br/>at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+<br/>at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:187)
+<br/>at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:145)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:554)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:307)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:348)
+<br/>at org.openqa.selenium.By$ById.findElement(By.java:216)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:299)
+<br/>at sun.reflect.GeneratedMethodAccessor23.invoke(Unknown Source)
+<br/>at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+<br/>at java.lang.reflect.Method.invoke(Method.java:597)
+<br/>at org.openqa.selenium.support.events.EventFiringWebDriver$2.invoke(EventFiringWebDriver.java:101)
+<br/>at com.sun.proxy.$Proxy1.findElement(Unknown Source)
+<br/>at org.openqa.selenium.support.events.EventFiringWebDriver.findElement(EventFiringWebDriver.java:180)
+<br/>at org.openqa.selenium.remote.server.handler.FindElement.call(FindElement.java:47)
+<br/>at org.openqa.selenium.remote.server.handler.FindElement.call(FindElement.java:1)
+<br/>at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+<br/>at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+<br/>at org.openqa.selenium.remote.server.DefaultSession$1.run(DefaultSession.java:169)
+<br/>at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:895)
+<br/>at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:918)
+<br/>at java.lang.Thread.run(Thread.java:680)
+<br/>1 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m6">com.sjsu.tests.MultipleGmailLogIn:gmailLogin</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr>
+<tr class="param stripe"><td>abc@gmail.com</td>
+<td>1234</td>
+</tr>
+<tr><td style="padding-left:3em" colspan="2">
+<p>Gmail Login Failed expected [true] but found [false]</p>
+org.testng.Assert.fail(Assert.java:94)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:494)
+<br/>at org.testng.Assert.assertTrue(Assert.java:42)
+<br/>at com.sjsu.tests.MultipleGmailLogIn.gmailLogin(MultipleGmailLogIn.java:221)
+<br/>17 lines not shown
+</td></tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m7">com.sjsu.tests.MultipleGmailLogIn:gmailLogin</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr>
+<tr class="param stripe"><td>abc@gmail.com</td>
+<td>1234</td>
+</tr>
+<tr><td style="padding-left:3em" colspan="2">
+<p>Gmail Login Failed expected [true] but found [false]</p>
+org.testng.Assert.fail(Assert.java:94)
+<br/>at org.testng.Assert.failNotEquals(Assert.java:494)
+<br/>at org.testng.Assert.assertTrue(Assert.java:42)
+<br/>at com.sjsu.tests.MultipleGmailLogIn.gmailLogin(MultipleGmailLogIn.java:221)
+<br/>17 lines not shown
+</td></tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m8">com.sjsu.tests.AmazonShoppingCartTest:googleSearch</h2>
+<div style="padding-left:3em">
+<p>Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;add-to-cart-button&quot;}
+Command duration or timeout: 11.59 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.32.0&apos;, revision: &apos;6c40c18&apos;, time: &apos;2013-04-09 17:22:56&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.8.3&apos;, java.version: &apos;1.6.0_43&apos;
+Session ID: 0cc5c600-fcb5-be48-a2bb-a20b44e94679
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, rotatable=false, locationContextEnabled=true, version=21.0, cssSelectorsEnabled=true, databaseEnabled=true, handlesAlerts=true, browserConnectionEnabled=true, nativeEvents=false, webStorageEnabled=true, applicationCacheEnabled=true, takesScreenshot=true}]
+Command duration or timeout: 12.14 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.31.0&apos;, revision: &apos;1bd294d&apos;, time: &apos;2013-02-27 20:53:56&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.8.3&apos;, java.version: &apos;1.6.0_41&apos;
+Session ID: 60de1191-1c02-4d46-835c-094c23afb833
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, rotatable=false, locationContextEnabled=true, webdriver.remote.sessionid=60de1191-1c02-4d46-835c-094c23afb833, version=21.0, cssSelectorsEnabled=true, databaseEnabled=true, handlesAlerts=true, browserConnectionEnabled=true, webStorageEnabled=true, nativeEvents=false, applicationCacheEnabled=true, takesScreenshot=true}]</p>
+sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+<br/>at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+<br/>at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+<br/>at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+<br/>at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:187)
+<br/>at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:145)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:554)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:307)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:348)
+<br/>at org.openqa.selenium.By$ById.findElement(By.java:216)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:299)
+<br/>at com.sjsu.tests.AmazonShoppingCartTest.googleSearch(AmazonShoppingCartTest.java:157)
+<br/>17 lines not shown
+<p>Caused by Screen shot has been taken
+Build info: version: &apos;2.31.0&apos;, revision: &apos;1bd294d&apos;, time: &apos;2013-02-27 20:53:56&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.8.3&apos;, java.version: &apos;1.6.0_41&apos;
+Driver info: driver.version: RemoteWebDriver</p>
+org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:125)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:554)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:307)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:348)
+<br/>at org.openqa.selenium.By$ById.findElement(By.java:216)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:299)
+<br/>at com.sjsu.tests.AmazonShoppingCartTest.googleSearch(AmazonShoppingCartTest.java:157)
+<br/>17 lines not shown
+<p>Caused by Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;add-to-cart-button&quot;}
+Command duration or timeout: 11.59 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.32.0&apos;, revision: &apos;6c40c18&apos;, time: &apos;2013-04-09 17:22:56&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.8.3&apos;, java.version: &apos;1.6.0_43&apos;
+Session ID: 0cc5c600-fcb5-be48-a2bb-a20b44e94679
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, rotatable=false, locationContextEnabled=true, version=21.0, cssSelectorsEnabled=true, databaseEnabled=true, handlesAlerts=true, browserConnectionEnabled=true, nativeEvents=false, webStorageEnabled=true, applicationCacheEnabled=true, takesScreenshot=true}]
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.31.0&apos;, revision: &apos;1bd294d&apos;, time: &apos;2013-02-27 20:53:56&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.8.3&apos;, java.version: &apos;1.6.0_41&apos;
+Driver info: driver.version: EventFiringWebDriver</p>
+sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+<br/>at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+<br/>at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+<br/>at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+<br/>at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:187)
+<br/>at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:145)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:554)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:307)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:348)
+<br/>at org.openqa.selenium.By$ById.findElement(By.java:216)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:299)
+<br/>at sun.reflect.GeneratedMethodAccessor23.invoke(Unknown Source)
+<br/>at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+<br/>at java.lang.reflect.Method.invoke(Method.java:597)
+<br/>at org.openqa.selenium.support.events.EventFiringWebDriver$2.invoke(EventFiringWebDriver.java:101)
+<br/>at com.sun.proxy.$Proxy1.findElement(Unknown Source)
+<br/>at org.openqa.selenium.support.events.EventFiringWebDriver.findElement(EventFiringWebDriver.java:180)
+<br/>at org.openqa.selenium.remote.server.handler.FindElement.call(FindElement.java:47)
+<br/>at org.openqa.selenium.remote.server.handler.FindElement.call(FindElement.java:1)
+<br/>at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+<br/>at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+<br/>at org.openqa.selenium.remote.server.DefaultSession$1.run(DefaultSession.java:169)
+<br/>at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:895)
+<br/>at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:918)
+<br/>at java.lang.Thread.run(Thread.java:680)
+<br/>1 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m9">com.sjsu.tests.AmazonShoppingCartTest:googleSearch</h2>
+<div style="padding-left:3em">
+<p>Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;add-to-cart-button&quot;}
+Command duration or timeout: 11.78 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.32.0&apos;, revision: &apos;6c40c18&apos;, time: &apos;2013-04-09 17:22:56&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.8.3&apos;, java.version: &apos;1.6.0_43&apos;
+Session ID: d075692f-c2d0-a240-97d5-5352fb9c642a
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, rotatable=false, locationContextEnabled=true, version=21.0, cssSelectorsEnabled=true, databaseEnabled=true, handlesAlerts=true, browserConnectionEnabled=true, nativeEvents=false, webStorageEnabled=true, applicationCacheEnabled=true, takesScreenshot=true}]
+Command duration or timeout: 12.30 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.31.0&apos;, revision: &apos;1bd294d&apos;, time: &apos;2013-02-27 20:53:56&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.8.3&apos;, java.version: &apos;1.6.0_41&apos;
+Session ID: 33680d22-7959-43fb-b40f-6f8c62859c2f
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, rotatable=false, locationContextEnabled=true, webdriver.remote.sessionid=33680d22-7959-43fb-b40f-6f8c62859c2f, version=21.0, cssSelectorsEnabled=true, databaseEnabled=true, handlesAlerts=true, browserConnectionEnabled=true, webStorageEnabled=true, nativeEvents=false, applicationCacheEnabled=true, takesScreenshot=true}]</p>
+sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+<br/>at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:39)
+<br/>at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+<br/>at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+<br/>at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:187)
+<br/>at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:145)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:554)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:307)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:348)
+<br/>at org.openqa.selenium.By$ById.findElement(By.java:216)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:299)
+<br/>at com.sjsu.tests.AmazonShoppingCartTest.googleSearch(AmazonShoppingCartTest.java:157)
+<br/>17 lines not shown
+<p>Caused by Screen shot has been taken
+Build info: version: &apos;2.31.0&apos;, revision: &apos;1bd294d&apos;, time: &apos;2013-02-27 20:53:56&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.8.3&apos;, java.version: &apos;1.6.0_41&apos;
+Driver info: driver.version: RemoteWebDriver</p>
+org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:125)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:554)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:307)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:348)
+<br/>at org.openqa.selenium.By$ById.findElement(By.java:216)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:299)
+<br/>at com.sjsu.tests.AmazonShoppingCartTest.googleSearch(AmazonShoppingCartTest.java:157)
+<br/>17 lines not shown
+<p>Caused by Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;add-to-cart-button&quot;}
+Command duration or timeout: 11.78 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.32.0&apos;, revision: &apos;6c40c18&apos;, time: &apos;2013-04-09 17:22:56&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.8.3&apos;, java.version: &apos;1.6.0_43&apos;
+Session ID: d075692f-c2d0-a240-97d5-5352fb9c642a
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=MAC, acceptSslCerts=true, javascriptEnabled=true, browserName=firefox, rotatable=false, locationContextEnabled=true, version=21.0, cssSelectorsEnabled=true, databaseEnabled=true, handlesAlerts=true, browserConnectionEnabled=true, nativeEvents=false, webStorageEnabled=true, applicationCacheEnabled=true, takesScreenshot=true}]
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.31.0&apos;, revision: &apos;1bd294d&apos;, time: &apos;2013-02-27 20:53:56&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.8.3&apos;, java.version: &apos;1.6.0_41&apos;
+Driver info: driver.version: EventFiringWebDriver</p>
+sun.reflect.GeneratedConstructorAccessor35.newInstance(Unknown Source)
+<br/>at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:27)
+<br/>at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+<br/>at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:187)
+<br/>at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:145)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:554)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:307)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:348)
+<br/>at org.openqa.selenium.By$ById.findElement(By.java:216)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:299)
+<br/>at sun.reflect.GeneratedMethodAccessor23.invoke(Unknown Source)
+<br/>at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+<br/>at java.lang.reflect.Method.invoke(Method.java:597)
+<br/>at org.openqa.selenium.support.events.EventFiringWebDriver$2.invoke(EventFiringWebDriver.java:101)
+<br/>at com.sun.proxy.$Proxy1.findElement(Unknown Source)
+<br/>at org.openqa.selenium.support.events.EventFiringWebDriver.findElement(EventFiringWebDriver.java:180)
+<br/>at org.openqa.selenium.remote.server.handler.FindElement.call(FindElement.java:47)
+<br/>at org.openqa.selenium.remote.server.handler.FindElement.call(FindElement.java:1)
+<br/>at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+<br/>at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+<br/>at org.openqa.selenium.remote.server.DefaultSession$1.run(DefaultSession.java:169)
+<br/>at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:895)
+<br/>at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:918)
+<br/>at java.lang.Thread.run(Thread.java:680)
+<br/>1 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m10">com.sjsu.tests.MultipleGmailLogIn:gmailLogin</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr>
+<tr class="param stripe"><td>optixlab@gmail.com</td>
+<td>kr1shna1</td>
+</tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m11">com.sjsu.tests.AmazonShoppingCartTest:googleSearch</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m12">com.sjsu.tests.AmazonShoppingCartTest:googleSearch</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m13">com.sjsu.tests.AmazonShoppingCartTest:googleSearch</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m14">com.sjsu.tests.AmazonShoppingCartTest:googleSearch</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m15">com.sjsu.tests.MultipleGmailLogIn:gmailLogin</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr>
+<tr class="param stripe"><td>optixlab@gmail.com</td>
+<td>kr1shna1</td>
+</tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m16">com.sjsu.tests.MultipleGmailLogIn:gmailLogin</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr>
+<tr class="param stripe"><td>optixlab@gmail.com</td>
+<td>kr1shna1</td>
+</tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m17">com.sjsu.tests.AmazonShoppingCartTest:googleSearch</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m18">com.sjsu.tests.MultipleGmailLogIn:gmailLogin</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr>
+<tr class="param stripe"><td>optixlab@gmail.com</td>
+<td>kr1shna1</td>
+</tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m19">com.sjsu.tests.AmazonShoppingCartTest:googleSearch</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m20">com.sjsu.tests.MultipleGmailLogIn:gmailLogin</h2>
+<table cellspacing="0" cellpadding="0" class="result">
+<tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr>
+<tr class="param stripe"><td>optixlab@gmail.com</td>
+<td>kr1shna1</td>
+</tr>
+</table>
+<p class="totop"><a href="#summary">back to summary</a></p>
+</body></html>

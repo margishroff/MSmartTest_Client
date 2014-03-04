@@ -1,0 +1,555 @@
+package com.sjsu.GUITesting;
+ 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.util.ArrayList;
+ 
+import com.sjsu.common.Constants;
+import com.sjsu.Beans.GUITestConfig;
+import com.sjsu.Exceptions.DirectoryDoesNotExist;
+
+public class VirtualDeviceManager {
+
+	
+	public boolean launchDevice(DeviceConfig deviceProfile) 
+	{
+		boolean result = true;
+		String devType = deviceProfile.deviceType;
+
+		try {
+				System.out.println("Launching Emulator " + devType);
+				
+				Process process1 = Runtime
+						.getRuntime()
+						.exec(Constants.EMULATOR_COMMAND_PATH +" -avd "+devType);
+				
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+ 
+	
+	@SuppressWarnings("null")
+	public boolean createTestSuiteFolder(String source) throws DirectoryDoesNotExist
+	{
+
+		if (source.isEmpty()|| source == null)
+		{
+			return false;
+		}
+		else
+		{
+			source = Constants.testSutieDirectory + "/"+ source;
+			System.out.println("source = "+source);
+		}
+
+		File folder = new File(source);
+
+		if(folder.exists() && !folder.canRead()) 
+		{
+			System.out.println("Access Right issue for source "+ source);
+			return false;
+		}
+
+		if(folder.exists())
+		{
+			System.out.println("Folder already exists");
+			return true;
+		}
+		else
+		{
+			System.out.println("Test Suite '" +folder.getAbsolutePath()+ "' does not exist. Creating...");
+
+			boolean success = (new File(source)).mkdirs();
+			if (success) {
+				System.out.println("Directories: " + source + " created");
+			}
+			return true;
+		}
+	}
+
+
+	public boolean createTestProfileFile(String testsuite, String fileName) throws DirectoryDoesNotExist, IOException
+	{
+
+		String source  = null;
+
+		if (testsuite.isEmpty()|| testsuite == null)
+		{
+			return false;
+		}
+		else
+		{
+			source = Constants.testSutieDirectory + "/"+ testsuite + "/" + fileName;
+			System.out.println("source = "+source);
+		}
+
+		File folder = new File(source);
+
+		if(folder.exists() && !folder.canRead()) 
+		{
+			System.out.println("Access Right issue for source "+ source);
+			return false;
+		}
+
+		if(folder.exists())
+		{
+			System.out.println("File already exists");
+			return true;
+		}
+		else
+		{
+			System.out.println("Test Profile '" +folder.getAbsolutePath()+ "' does not exist. Creating...");
+
+			boolean success = (new File(source)).createNewFile();
+			if (success) {
+				System.out.println("File: " + source + " created");
+			}
+			return true;
+		}
+	}
+
+
+	public boolean writeToTestProfileFile( GUITestConfig testConfig) throws DirectoryDoesNotExist, IOException
+	{
+
+		String source  = null;
+		String testsuite = testConfig.getTestSuite();
+		String fileName = testConfig.getTestProfile();
+
+		if (testsuite.isEmpty()|| testsuite == null)
+		{
+			return false;
+		}
+		else
+		{
+			source = Constants.testSutieDirectory + "/"+ testsuite + "/" + fileName;
+			System.out.println("source = "+source);
+		}
+
+		File testProfileFile = new File(source);
+
+		if(testProfileFile.exists() && !testProfileFile.canWrite()) 
+		{
+			System.out.println("Access Right issue for source "+ source);
+			return false;
+		}
+
+		if(!testProfileFile.exists())
+		{
+			System.out.println("Test Profile '" +testProfileFile.getAbsolutePath()+ "' does not exist. Creating...");
+
+			boolean success = (new File(source)).createNewFile();
+			if (success) {
+				System.out.println("File: " + source + " created");
+			}
+		}
+
+		//Write to file
+		try
+		{
+			System.out.println("Test Profile '" +testProfileFile.getAbsolutePath()+ "' exits. Writing to file ...");
+
+
+			FileWriter fw = new FileWriter(testProfileFile);
+			BufferedWriter bw = new BufferedWriter(fw);
+
+			bw.write("Test Suite: " + testConfig.getTestSuite()+ "\n");
+			bw.write("Test Profile: " + testConfig.getTestProfile()+ "\n");
+			bw.write("Test Type: " + testConfig.getAppType()+ "\n");
+			bw.write("Device Profile: " + testConfig.getDeviceProfile()+ "\n");
+			bw.write("Network Speed: " + testConfig.getNetworkSpeed()+ "\n");
+			bw.write("Test Apk Package Name: " + testConfig.getTestApkPackageName()+ "\n");
+			bw.write("Test Apk Path: " + testConfig.getTestApkPath()+ "\n");
+			bw.write("Web TestScript: " + testConfig.getWebTestScript());
+			bw.close();
+
+			return true;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+
+	//Display testConfig in S.O.P
+	public void printTestConfigDetails(GUITestConfig testConfig)
+	{
+		System.out.println("Test Suite: " + testConfig.getTestSuite());
+		System.out.println("Test Profile: " + testConfig.getTestProfile());
+		System.out.println("Test Type: " + testConfig.getAppType());
+		System.out.println("Device Profile: " + testConfig.getDeviceProfile());
+		System.out.println("Network Speed: " + testConfig.getNetworkSpeed());
+		System.out.println("Test Apk Package Name:" + testConfig.getTestApkPackageName());
+		System.out.println("Test Apk Path: " + testConfig.getTestApkPath());
+		System.out.println("Web TestScript: " + testConfig.getWebTestScript());
+
+	}
+	public GUITestConfig readTestProfileFile(String testsuite, String fileName) throws DirectoryDoesNotExist, IOException
+	{
+
+		System.out.println("READING FROM FILE:");
+
+		String source  = "";
+		GUITestConfig testConfig = null; 
+
+		if (testsuite.isEmpty()|| testsuite == null)
+		{
+			return null;
+		}
+		else
+		{
+			source = Constants.testSutieDirectory + "/"+ testsuite + "/" + fileName;
+			System.out.println("source = "+source);
+		}
+
+		File testProfileFile = new File(source);
+
+		if(testProfileFile.exists() && !testProfileFile.canRead()) 
+		{
+			System.out.println("Access Right issue for source "+ source);
+			return null;
+		}
+
+		//If file doesn't exist return as action failed
+		if(!testProfileFile.exists())
+		{
+			System.out.println("Test Profile '" +testProfileFile.getAbsolutePath()+ "' does not exist. FAILED.");
+			return null;
+
+		}
+
+		System.out.println("Test Profile '" +testProfileFile.getAbsolutePath()+ "' exits. Reading file ...");
+
+		try {
+
+			BufferedReader br = new BufferedReader(new FileReader(source));
+			try {
+				StringBuilder sb = new StringBuilder();
+				String line = br.readLine();
+
+				testConfig = new GUITestConfig();
+				
+				while (line != null) {
+					if (line.trim().startsWith("Test Suite: ")) {
+						testConfig.setTestSuite(line.replace("Test Suite: ", "").trim().replaceAll("\0", " "));
+					}
+					if (line.trim().startsWith("Test Profile: ")) {
+						testConfig.setTestProfile(line.replace("Test Profile: ", "").trim().replaceAll("\0", " "));
+					}
+					if (line.trim().startsWith("Test Type: ")) {
+						testConfig.setAppType(line.replace("Test Type: ", "").trim().replaceAll("\0", " "));
+					}
+					if (line.trim().startsWith("Device Profile: ")) {
+						testConfig.setDeviceProfile(line.replace("Device Profile: ", "").trim().replaceAll("\0", " "));
+					}
+					if (line.trim().startsWith("Network Speed: ")) {
+						testConfig.setNetworkSpeed(line.replace("Network Speed: ", "").trim().replaceAll("\0", " "));
+					}
+					if (line.trim().startsWith("Test Apk Package Name: ")) {
+						testConfig.setTestApkPackageName(line.replace("Test Apk Package Name: ", "").trim().replaceAll("\0", " "));
+					}
+					if (line.trim().startsWith("Test Apk Path: " )) {
+						testConfig.setTestApkPath(line.replace("Test Apk Path: " , "").trim().replaceAll("\0", " "));
+					}
+					if (line.trim().startsWith("Web TestScript: ")) {
+						testConfig.setWebTestScript(line.replace("Web TestScript: ", "").trim().replaceAll("\0", " "));
+					}
+					
+					//next line
+					 line = br.readLine();
+				}
+				 
+			} finally {
+				br.close();
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		//Display testConfig in S.O.P
+		printTestConfigDetails(testConfig);
+		return testConfig;
+	}
+
+	@SuppressWarnings("null")
+	public String[] LoadTestSuitesNamesFromDisk() throws DirectoryDoesNotExist
+	{
+		String[] listofTestSuites = null;
+		String source = Constants.testSutieDirectory ;
+
+		if (source.isEmpty()|| source == null)
+		{
+			return null;
+		}
+		else
+		{
+			//source = Constants.testSutieDirectory ;
+			System.out.println("source ="+source);
+		}
+		File folder = new File(source);
+		if (!folder.exists() || !folder.canRead()) 
+		{
+			System.out.println("Test Suite '" +folder.getAbsolutePath()+ "' does not exist or is not readable!");
+			throw new DirectoryDoesNotExist();
+		}
+
+		if (folder.canRead()) 
+		{
+			if (folder.isDirectory()) 
+			{
+				//get all the test profiles from test suite directory and load the names 
+				String[] listOfFiles = folder.list();
+
+				if (listOfFiles != null) 
+				{
+					listofTestSuites = listOfFiles;
+					for (int i = 0; i < listOfFiles.length; i++) 
+					{
+						System.out.println(listOfFiles[i]);
+						if(listOfFiles[i] != null)
+						{
+							listofTestSuites[i] = listOfFiles[i].replace(".txt", "");
+						}
+					}
+				}
+			}
+			else 
+			{
+				System.out.println("NO DIRECTORY NAMED '" + source + "' found");
+			}
+		}
+		else
+		{
+			System.out.println("CANNOT READ DIRECTORY NAMED '" + source + "' ");
+		}
+
+		return listofTestSuites;
+	}
+
+	@SuppressWarnings("null")
+	public String[] LoadTestProfilesNamesFromDisk(String source) throws DirectoryDoesNotExist
+	{
+		String[] listofTestProfiles = null;
+
+		if (source.isEmpty()|| source == null)
+		{
+			return null;
+		}
+		else
+		{
+			source = Constants.testSutieDirectory + "/"+ source;
+			System.out.println("source ="+source);
+		}
+		File folder = new File(source);
+		if (!folder.exists() || !folder.canRead()) 
+		{
+			System.out.println("Test Suite '" +folder.getAbsolutePath()+ "' does not exist or is not readable!");
+			throw new DirectoryDoesNotExist();
+		}
+
+		if (folder.canRead()) 
+		{
+			if (folder.isDirectory()) 
+			{
+				//get all the test profiles from test suite directory and load the names 
+				String[] listOfFiles = folder.list();
+
+				if (listOfFiles != null) 
+				{
+					listofTestProfiles = listOfFiles;
+					for (int i = 0; i < listOfFiles.length; i++) 
+					{
+						System.out.println(listOfFiles[i]);
+						if(listOfFiles[i] != null)
+						{
+							listofTestProfiles[i] = listOfFiles[i].replace(".txt", "");
+						}
+					}
+				}
+			}
+			else 
+			{
+				System.out.println("NO DIRECTORY NAMED '" + source + "' found");
+			}
+		}
+		else
+		{
+			System.out.println("CANNOT READ DIRECTORY NAMED '" + source + "' ");
+		}
+
+		return listofTestProfiles;
+	}
+ 
+//NEeds to UPDATED
+	public String CheckIfValidWebTestConfigData(String testSuite,String testProfile,String deviceProfile,
+			String networkSpeed,String testScript)
+	{
+		String errorMsg = "";
+
+		//Check testSuite selected
+		//Check testProfile selected
+
+		//Check devieProfile selected
+		if(deviceProfile.isEmpty() || deviceProfile == null)
+		{
+			errorMsg = "Mobile Profile not selected. Please select from available options.";
+		}
+
+		//Check networkSpeed selected
+		if(networkSpeed.isEmpty() || networkSpeed == null)
+		{
+			errorMsg = errorMsg + "\n" + "Network speed not selected. Please select from available options.";
+		}
+		//Check Test APK selected exists and valid
+
+		return errorMsg;
+	}
+
+	//Create object to ease data transfer between classes
+	public GUITestConfig saveGUITestConfig(String testSuite,String testProfile,String appType, String deviceProfile,
+			String networkSpeed,String testApkPath,String testApkPackageName,String webTestScript) 
+	{
+		GUITestConfig testConfig = new GUITestConfig();
+
+		testConfig.setTestSuite(testSuite);
+		testConfig.setTestProfile(testProfile);
+		testConfig.setAppType(appType);
+		testConfig.setDeviceProfile(deviceProfile);
+		testConfig.setNetworkSpeed(networkSpeed);
+		testConfig.setTestApkPath(testApkPath);
+		testConfig.setTestApkPackageName(testApkPackageName);
+		testConfig.setWebTestScript(webTestScript);
+
+		System.out.println("Test Configurations created as GUITestConfig object");
+
+		return testConfig;
+	}
+
+	//MArgi - get selected network type
+	public String getNetworkSpeedValue(String networkspeed)
+	{
+		if(networkspeed.isEmpty() || networkspeed == null)
+		{
+			return "ERROR";
+		}
+ 
+		if(networkspeed.toLowerCase().contains("gsm"))
+		{
+			return "gsm" ;
+		} 
+		else if(networkspeed.toLowerCase().contains("gprs"))
+		{
+			return "gprs" ;
+		}
+		else if(networkspeed.toLowerCase().contains("edge"))
+		{
+			return "edge" ;
+		}
+		else if(networkspeed.toLowerCase().contains("umts"))
+		{
+			return "umts" ;
+		}
+		else if(networkspeed.toLowerCase().contains("hsdpa"))
+		{
+			return "hsdpa" ;
+		}
+		else
+			return "";
+	}
+	
+ 
+	public boolean UnLockEmulator(String emulatorId)
+	{
+		try {
+				Process process1 = Runtime
+					.getRuntime()
+					.exec(Constants.ADB_COMMAND_PATH + " -s "+ emulatorId + " shell input keyevent 82");
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return  true;
+		
+	}
+	
+	public ArrayList<String> GetDeviceIds() throws IOException {
+				
+		Process process2 = Runtime.getRuntime().exec(Constants.ADB_COMMAND_PATH
+				+" devices");
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(
+				process2.getInputStream()));
+		StringBuffer sb = new StringBuffer();
+		String line;
+		ArrayList<String> lst = new ArrayList<String>();
+
+		int lineNumber = 0;
+		while ((line = br.readLine()) != null) {
+			sb.append(line).append("\n");
+			lineNumber++;
+
+			if (lineNumber > 1 && (line.length() > 0)) {
+				lst.add(line);
+				System.out.println("Found "+line);
+			}
+
+		}
+		ArrayList<String> deviceIdList = new ArrayList<String>();
+
+		for (int i = 0; i < lst.size(); i++) {
+			String[] deviceInfo = lst.get(i).split("\t");
+			if (deviceInfo == null) {
+				System.out.println("Device info is  NULL");
+			} else {
+				System.out.println("Device info length  " + deviceInfo.length);
+				if (deviceInfo.length >= 2) {
+					if (deviceInfo[1].equals("device")) {
+						deviceIdList.add(deviceInfo[0]);
+						System.out.println("Added " + deviceInfo[0]);
+					}
+					else
+						
+					{
+						System.out.println("Device Status is '" + deviceInfo[1]+"'");
+					}
+				}	
+
+			}
+		}
+		
+		System.out.println("Returning "+deviceIdList.size());
+		return deviceIdList;
+	}
+	
+
+	public boolean StopDevice(String emulatorId)
+	{
+		boolean result = false;
+		String str =  Constants.ADB_COMMAND_PATH +" -s " + emulatorId + " emu kill";
+
+		try {
+			Process process = Runtime.getRuntime().exec(str);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+}

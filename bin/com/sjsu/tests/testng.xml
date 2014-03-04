@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="MSmartTest MobileWeb TestSuite" parallel="classes"
+	thread-count="3" verbose="3">
+
+	<test name="AndroidTest" parallel="classes" preserve-order="false">
+		<classes>
+			<class name="com.sjsu.tests.TestScriptA10Users" />
+			<class name="com.sjsu.tests.TestScriptB10Users" />
+		</classes>
+	</test>
+</suite>
+

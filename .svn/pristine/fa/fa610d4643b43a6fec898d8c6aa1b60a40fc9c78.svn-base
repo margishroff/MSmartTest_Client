@@ -1,0 +1,22 @@
+package com.sjsu.client;
+
+ 
+import com.vaadin.Application;
+import com.vaadin.ui.*;
+
+/**
+ * Main application class.
+ */
+public class WebsiteGUI extends Application {
+ 
+    @Override
+    public void init() {
+        Window mainWindow = new Window("MSmartTest_Client");
+ 
+        setTheme("msmarttheme");
+		
+		mainWindow.addComponent(new MSmart());
+        setMainWindow(mainWindow);
+    }
+}
+

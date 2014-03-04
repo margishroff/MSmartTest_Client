@@ -1,0 +1,153 @@
+
+package com.sjsu.GUITesting;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
+public class TestController {
+
+	public TestConfig testConf;
+
+	public ArrayList<TestResult> runTest(TestConfig testConf) {
+
+		ArrayList<TestResult> result = new ArrayList<TestResult>();
+		try {
+			
+
+			System.out.println("Launching Emulators");
+
+			VirtualDeviceManager vdm = new VirtualDeviceManager();
+			int launchedCount = 0;
+			for (int i = 0; i < testConf.deviceProfileList.size(); i++) {
+				DeviceConfig dc = testConf.deviceProfileList.get(i);
+				
+				vdm.launchDevice(dc);
+				launchedCount++;
+			}
+			Thread.sleep(30000);
+
+			// Wait for all device to be ready
+			int waitTime = 5 * 60 * 1000;
+			long startTime = Calendar.getInstance().getTimeInMillis();
+
+			ArrayList<String> deviceIdList;
+			while (true) {
+
+				System.out.println("Waiting for Emulators");
+				deviceIdList = vdm.GetDeviceIds();
+				if (deviceIdList.size() >= launchedCount) {
+					break;
+				}
+				Thread.sleep(5000);
+
+				long currTime = Calendar.getInstance().getTimeInMillis();
+				if ((currTime - startTime) > waitTime) {
+					TestResult tr = new TestResult();
+					tr.Passed = false;
+					tr.ErrorDetails = "Timeout. All Emulator not launched";
+					result.add(tr);
+					return result;
+				}
+			}
+
+			System.out.println("Installing App");
+			AppExecutor ae = new AppExecutor();
+
+			for (int i = 0; i < deviceIdList.size(); i++) {
+				
+				System.out.println("Installing App Emulator-"
+						+ Integer.toString(i + 1) + " " + deviceIdList.get(i));
+				ae.UninstallApp(
+						testConf.deviceProfileList.get(i).testAppPackageName,
+						deviceIdList.get(i));
+
+				ae.InstallApp(
+						testConf.deviceProfileList.get(i).testAppPackageName,
+						testConf.deviceProfileList.get(i).testApp,
+						deviceIdList.get(i));
+			}
+
+			Thread.sleep(5000);
+
+			System.out.println("Launching App");
+			for (int i = 0; i < deviceIdList.size(); i++) {
+				System.out.println("Launching App Emulator-"
+						+ Integer.toString(i + 1) + " " + deviceIdList.get(i));
+				ae.ExecuteApp(
+						testConf.deviceProfileList.get(i).testAppPackageName,
+						deviceIdList.get(i));
+
+			}
+
+			for (int i = 0; i < deviceIdList.size(); i++) {
+				System.out.println("Unlocking the Emulator Screen, Emulator-"
+						+ Integer.toString(i + 1) + " " + deviceIdList.get(i));
+				vdm.UnLockEmulator(deviceIdList.get(i));
+			}
+
+			Thread.sleep(5000);
+
+			ArrayList<Thread> threads = new ArrayList<Thread>();
+			ArrayList<TestScriptExecutor> scriptExecutors = new ArrayList<TestScriptExecutor>();
+			for (int i = 0; i < deviceIdList.size(); i++) {
+				System.out.println("Executing Test Script, Emulator-"
+						+ Integer.toString(i + 1) + " " + deviceIdList.get(i));
+
+				TestScriptExecutor tse = new TestScriptExecutor(
+						testConf.deviceProfileList.get(i).testScript,
+						deviceIdList.get(i));
+
+				Thread t = new Thread(tse);
+				t.start();
+
+				threads.add(t);
+				scriptExecutors.add(tse);
+
+				// result = tse.ExecuteScript(
+				// testConf.deviceProfileList.get(i).testScript,
+				// deviceIdList.get(i));
+
+			}
+
+			int running = 0;
+			do {
+				running = 0;
+				for (Thread thread : threads) {
+					if (thread.isAlive()) {
+						running++;
+					}
+				}
+				System.out.println("We have " + running
+						+ " running Script Exeecutor threads. ");
+				Thread.sleep(2000);
+			} while (running > 0);
+
+			for (int i = 0; i < scriptExecutors.size(); i++) {
+				TestScriptExecutor tse = scriptExecutors.get(i);
+				result.add(tse.Result);
+			}
+
+			for (int i = 0; i < deviceIdList.size(); i++) {
+				System.out.println("Stopping Device, Emulator-"
+						+ Integer.toString(i + 1) + " " + deviceIdList.get(i));
+				vdm.StopDevice(deviceIdList.get(i));
+			}
+
+			Thread.sleep(5000);
+
+			return result;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+			TestResult tr = new TestResult();
+			tr.Passed = false;
+			tr.ErrorDetails = "Exception. "+e.getMessage();
+			result.add(tr);
+			return result;
+		
+		}
+	}
+
+}

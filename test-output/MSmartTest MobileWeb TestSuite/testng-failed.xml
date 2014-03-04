@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="3" verbose="4" name="Failed suite [MSmartTest MobileWeb TestSuite]" parallel="classes">
+  <test name="AndroidTest(failed)" parallel="classes">
+    <classes>
+      <class name="com.sjsu.tests.AmazonShoppingCartTest">
+        <methods>
+          <include name="googleSearch"/>
+        </methods>
+      </class> <!-- com.sjsu.tests.AmazonShoppingCartTest -->
+      <class name="com.sjsu.tests.MultipleGmailLogIn">
+        <methods>
+          <include name="gmailLogin"/>
+        </methods>
+      </class> <!-- com.sjsu.tests.MultipleGmailLogIn -->
+    </classes>
+  </test> <!-- AndroidTest(failed) -->
+</suite> <!-- Failed suite [MSmartTest MobileWeb TestSuite] -->

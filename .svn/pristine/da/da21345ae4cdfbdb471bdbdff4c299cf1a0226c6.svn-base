@@ -1,0 +1,28 @@
+package com.sjsu.LoadTesting;
+
+
+import java.io.IOException;
+
+public class LoadTest {
+
+	public void runtest(String testpath) throws IOException{
+	//void shell_exec(C:\Users\Rashmi\Desktop\apache-jmeter-2.8\bin);
+		String testscriptpath=testpath;
+		
+		String path1= "C:\\Users\\Rashmi\\Desktop\\apache-jmeter-2.8\\bin\\jmeter.bat -n -t";
+		//String path2= Load_Constants.path + testpath;
+		String path2=  testpath;
+		String path3= " -l C:\\Users\\Rashmi\\Desktop\\apache-jmeter-2.8\\bin\\result_jairashmi.xml";
+		
+		String execute_command= path1 + " " + path2 + path3;
+		
+		Runtime.getRuntime().exec(execute_command);
+		//String path1="C:\\Users\\Rashmi\\Desktop\\apache-jmeter-2.8\\bin\\jmeter.bat";
+		//String file="C:\\Users\\Rashmi\\Desktop\\apache-jmeter-2.8\\bin\\testplan1.jmx -l C:\\Users\\Rashmi\\Desktop\\apache-jmeter-2.8\\bin\\result_rashmi.xml";
+		//String file1=" -l 5thmay.cvs";
+		//String path =path1 +" -n" + " -t " +  file ;
+		//Runtime.getRuntime().exec(path);
+		
+		
+	}
+}

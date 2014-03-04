@@ -1,0 +1,20 @@
+package com.sjsu.GUITesting;
+public class DeviceConfig {
+	
+	public String deviceProfileId;
+	public String deviceType;
+	public String networkType;
+	public String testApp;
+	public String testAppPackageName;
+	public String testScript;
+	public String testScriptPackageName;
+
+	
+	
+	
+	public boolean saveDeviceProfile(String deviceType, String networkType, long deviceCount, String deviceProfileId) 
+	{
+		boolean pass = true;
+		return pass;
+	}
+}
